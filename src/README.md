@@ -5,7 +5,9 @@ A super simple FastAPI application that allows students to view and sign up for 
 ## Features
 
 - View all available extracurricular activities
-- Sign up for activities
+- Teacher login for managing activity registrations
+- Sign up students for activities
+- Remove students from activities
 
 ## Getting Started
 
@@ -25,12 +27,23 @@ A super simple FastAPI application that allows students to view and sign up for 
    - API documentation: http://localhost:8000/docs
    - Alternative documentation: http://localhost:8000/redoc
 
+4. Use one of the demo teacher accounts when you need to manage registrations:
+
+   ```
+   msmith / mergington-math
+   jcarter / debate-coach
+   aprince / art-studio
+   ```
+
 ## API Endpoints
 
 | Method | Endpoint                                                          | Description                                                         |
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
-| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| POST   | `/auth/login`                                                     | Log in as a teacher and get a session token                         |
+| POST   | `/auth/logout`                                                    | Log out the current teacher session                                 |
+| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Register a student for an activity as a teacher                     |
+| DELETE | `/activities/{activity_name}/unregister?email=student@mergington.edu` | Remove a student from an activity as a teacher                  |
 
 ## Data Model
 
@@ -43,7 +56,12 @@ The application uses a simple data model with meaningful identifiers:
    - Maximum number of participants allowed
    - List of student emails who are signed up
 
-2. **Students** - Uses email as identifier:
+2. **Teachers** - Uses usernames and passwords stored in `teachers.json`:
+
+   - Username
+   - Password
+
+3. **Students** - Uses email as identifier:
    - Name
    - Grade level
 
