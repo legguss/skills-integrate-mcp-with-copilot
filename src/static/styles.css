@@ -16,7 +16,6 @@ body {
 }
 
 header {
-  text-align: center;
   padding: 20px 0;
   margin-bottom: 30px;
   background-color: #1a237e;
@@ -24,8 +23,28 @@ header {
   border-radius: 5px;
 }
 
+.header-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 header h1 {
   margin-bottom: 10px;
+}
+
+header h2 {
+  text-align: left;
 }
 
 main {
@@ -111,18 +130,18 @@ section h3 {
 }
 
 .delete-btn {
-  background: none;
-  border: none;
+  background-color: #ffebee;
+  border: 1px solid #ef9a9a;
   color: #c62828;
   cursor: pointer;
   font-size: 14px;
-  padding: 2px 5px;
+  padding: 4px 8px;
   transition: all 0.2s;
   border-radius: 3px;
 }
 
 .delete-btn:hover {
-  background-color: #ffebee;
+  background-color: #ffcdd2;
 }
 
 .participants-section p {
@@ -164,6 +183,32 @@ button:hover {
   background-color: #3949ab;
 }
 
+.secondary-button {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.secondary-button:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.status-pill {
+  background-color: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-size: 14px;
+  padding: 8px 12px;
+}
+
+.info-panel {
+  background-color: #e8eaf6;
+  border: 1px solid #c5cae9;
+  border-radius: 4px;
+  color: #283593;
+  margin-bottom: 15px;
+  padding: 12px;
+}
+
 .message {
   margin-top: 20px;
   padding: 10px;
@@ -192,9 +237,80 @@ button:hover {
   display: none;
 }
 
+.modal {
+  align-items: center;
+  background-color: rgba(15, 23, 42, 0.55);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 20px;
+  position: fixed;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  max-width: 420px;
+  padding: 24px;
+  position: relative;
+  width: 100%;
+}
+
+.modal-content h3 {
+  color: #1a237e;
+  margin-bottom: 8px;
+}
+
+.modal-content p {
+  margin-bottom: 16px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 24px;
+  padding: 0;
+  position: absolute;
+  right: 16px;
+  top: 12px;
+}
+
+.close-button:hover {
+  background: none;
+  color: #111;
+}
+
+.demo-credentials {
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 4px;
+  margin-top: 14px;
+}
+
 footer {
   text-align: center;
   margin-top: 30px;
   padding: 20px;
   color: #666;
+}
+
+@media (max-width: 767px) {
+  header {
+    text-align: left;
+  }
+
+  .header-bar {
+    flex-direction: column;
+  }
+
+  .header-actions {
+    justify-content: flex-start;
+  }
 }
